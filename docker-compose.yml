@@ -1,0 +1,17 @@
+version: '3'
+services:
+  jenkins:
+    image: meu-jenkins-python:latest
+    container_name: meu_container
+    ports:
+      - "8080:8080"  # Porta do Jenkins Web
+      - "8000:8000"  # Porta personalizada, se necessário
+      - "50000:50000"  # Porta para comunicação do Jenkins com agentes
+    volumes:
+      - jenkins_home:/var/jenkins_home  # Persistência de dados do Jenkins
+    environment:
+      - JENKINS_OPTS="--prefix=/jenkins"  # Se precisar de um prefixo
+    restart: always  # Reiniciar automaticamente se o container falhar
+
+volumes:
+  jenkins_home:  # Volume persistente para dados do Jenkins

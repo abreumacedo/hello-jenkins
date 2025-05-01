@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Executar Aplicação') {
+            steps {
+                sh 'python3 app.py'
+            }
+        }
+    }
+}
